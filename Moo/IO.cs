@@ -6,7 +6,7 @@
         {
             List<PlayerData> results = new List<PlayerData>();
             ConsoleUI ui = new ConsoleUI();
-            ReadPlayersFromFile("results.txt");
+            results = ReadPlayersFromFile("result.txt");
             results.Sort((p1, p2) => p1.Average().CompareTo(p2.Average()));
             ui.Write("Player   games average");
             ViewPlayerResults(results);

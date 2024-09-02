@@ -1,4 +1,6 @@
-﻿namespace Moo
+﻿using System.Text.RegularExpressions;
+
+namespace Moo
 {
     public class Game
     {
@@ -22,9 +24,9 @@
 
 
                 ui.Write("New game:\n");
-                //comment out or remove next line to play real games!
-                ui.Write("For practice, number is: " + target + "\n");
-                string playerGuess = ui.Read();
+                
+                ShowTarget(target);
+                string playerGuess = ReadUserGuess();
 
                 int numberOfGuesses = 1;
                 string bullsAndCows = CheckBullsAndCows(target, playerGuess);
@@ -47,6 +49,7 @@
                 }
             }
         }
+
         public static string GenerateTarget()
         {
             Random randomGenerator = new Random();
@@ -63,6 +66,27 @@
                 target = target + randomDigit;
             }
             return target;
+        }
+
+        public void ShowTarget(string target)
+        {
+            ui.Write("For practice, number is: " + target + "\n");
+        }
+
+        public string ReadUserGuess()
+        {
+            while (true)
+            {
+                var userInput = ui.Read();
+                if (userInput.Length == 4 && Regex.IsMatch(userInput, "[0-9]"))
+                {
+                    return userInput;
+                }
+                else
+                {
+                    ui.Write("Please only input digits. Four of them. Thaaanks.");
+                }
+            }
         }
 
         public static string CheckBullsAndCows(string target, string playerGuess)
