@@ -1,0 +1,52 @@
+Documenation
+
+Names
+Vi har genomgående i programmet ändrat namn till mer deskriptiva och meningsfulla namn från förkortningar och allmänt otydliga namn.
+Exempel. I gameklassen ändrade vi variabeln nGuesses till det mer tydliga och beskrivande numberOfGuesses. [1]
+
+Klasser
+Eftersom programmet som vi fick var väldigt stor och gjorde på tok för mycket (allt), så bröt vi ner programmet i mindre klasser.
+Klasser ska vara korta! Precis som funktioner ska vara korta, så ska klasser också vara det. Detta på grund av att det är enklare att förstå vad funktion/klassen gör, 
+samt att det blir enklare att felsöka[2,3]
+Enligt kurslitteraturen ska varje klass ha en _single responsibility principle_, dvs. att en klass ska enbart göra en sak.[4]
+Exempel: Ursprungsprogrammet hade både spellogik och spelardatan i samma fil. 
+
+Kommentarer
+Enligt kurslitteraturförfattaren är varje kommentar ett misslyckande, då man inte har lyckats skriva begriplig kod.[5]
+Över tid så blir kommentarer felaktiga eftersom att kod inte är beständig, utan ändras. Om den relaterade kommentaren inte ändras med kodändringarna,
+leder det till att kommentarer blir missvisande.[5]
+Exempel: Det fanns en kommentar om att kodrad visade 'goal'-värdet i konsolen. Den tog vi bort, bröt ut koden i en egen funktion, och ersatte i klientkoden med ett metodanrop.
+
+Funktioner
+FUnktioner ska vara små, precis som klasser. Funktioner ska göra en sak, och göra det bra. 
+Exempel: IO.ShowTopList() är en funktion som vi bröt ut ur while-loopen som kör programmet.
+För att vi tyckte att de inte hörde till själva spelet och att de var med en tydlig subrutin för att passa in i filhanteringen och gör koden mer läsbar.
+
+Felhantering
+Eftersom felhantering var en punkt i labben så valde vi att implementera det på det ställe där vi tar in input från användaren. 
+Vi returnerade inte null, då det är jobbigt och tidskrävande att checka för null vid metodanrop. Allt enligt _författaren_ och dennes användning av Java. [6]
+
+Rena tester
+Kurslitteraturförfattaren menar i kapitlet om rena tester, att BUILD-OPERATE-CHECK är ett mönster som är gångbart att använda när man bygger ett test.
+Detta för att det ger en tydlig struktur av testet. 
+Vad vi har gjort: För att visa på skillnaden mellan ett sämre och ett bättre strukturerat test, har vi valt att göra hälften av våra tester kompletta
+utifrån BUILD-OPERATE-CHECK-mönstret, och hälften där operationsdelen saknas.[6,7]
+
+Patterns och programstruktur
+Vi har använt oss utav konstruktorinjektion, när vi i systemets setup-fil (Program.cs) skickar med instanser av Iui och IO till Game-konstuktorn.
+Vi har delat upp systemet i olika skikt. Användargränssnittet består av ett interface (Iui.cs) och en implementation (ConsoleUI.cs).
+Programlogiken ligger i Game.cs, och statistikinsamling/redovisning finns i IO.cs.
+
+
+Referenser
+[1] Clean Code; Martin, Robert; sid 18
+[2] Clean Code; Martin, Robert; sid 34
+[3] Clean Code; Martin, Robert; sid 136
+[4] Clean Code; Martin, Robert; sid 138
+[5] Clean Code; Martin, Robert; sid 54
+[5] Clean Code; Martin, Robert; sid 110
+[6] https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
+[7] Clean Code; Martin, Robert; sid 127
+
+
+
