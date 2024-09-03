@@ -92,7 +92,10 @@ namespace Moo
         public static string CheckBullsAndCows(string target, string playerGuess)
         {
             int cows = 0, bulls = 0;
-            playerGuess += "    ";     // if player entered less than 4 chars
+            if (playerGuess.Length < 4)
+            {
+                playerGuess += "    ";
+            }
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)

@@ -2,6 +2,12 @@
 {
     public class IO
     {
+        Iui ui;
+        public IO(Iui ui)
+        {
+            this.ui = ui; 
+        }
+
         public void ShowTopList()
         {
             List<PlayerData> results = new List<PlayerData>();
@@ -23,7 +29,7 @@
         {
             foreach (PlayerData player in results)
             {
-                Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
+                ui.Write(string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NumberOfGames, player.Average()));
             }
         }
 
